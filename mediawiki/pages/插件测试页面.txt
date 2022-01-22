@@ -1,0 +1,214 @@
+==StringFunctions==
+* "Hello World!"的长度 = {{#len: Hello World!}}
+
+==SyntaxHighlight_GeSHi==
+<source lang="c">
+/* source */
+#include <stdio.h>
+int main(int argc, char **argv)
+{
+    printf('Hello World!\n");
+    return 0;
+}
+</source>
+----
+<syntaxhighlight lang="c">
+/* syntaxhighlight */
+#include <stdio.h>
+int main(int argc, char **argv)
+{
+    printf('Hello World!\n");
+    return 0;
+}
+</syntaxhighlight>
+
+==SimpleTooltip==
+* {{#tip-text: 显示文本|这是隐藏在后面的提示文本}}
+* {{#tip-info: 这是隐藏在后面的提示文本}}
+* {{#tip-img: resources/assets/logo.png|image 这是隐藏在后面的提示文本}}
+
+==CategoryTree==
+* <categorytree>TEST</categorytree>
+
+==SubPageList==
+* {{#splist:default=无子页面}} <splist default=无子页面/>
+* {{#subpages:}} <subpages/>
+* {{#subpages:Test}} <subpages>Test</subpages>
+* {{#subpagecount:}} <subpagecount/>
+* {{#subpagecount:Test}} <subpagecount>Test</subpagecount>
+
+==pChart4mw==
+===bar===
+<pbars size=300x150 title="Site Visitors" ymin=0 ymax=10000 legend>
+    ,Europe,United States,Asia
+    Oct,5345,3110,1291
+    Nov,3452,3695,1047
+    Dec,7843,4712,1305
+</pbars>
+===pie===
+{{#pPie: exploded|3d|data=
+    Sales,43
+    Marketing,21
+    Development,56
+    Customer Support,23
+    Information Technology,31
+    Administration,13
+}}
+===line===
+<pLines ymin=0 ymax=10000 axiscolor=888888 cubic filled angle=90 plots legend>
+    ,US,EU
+    Jan,6748,4301
+    Feb,3911,5019
+    Mar,3019,3941
+    Apr,4810,6412
+    May,2203,4823
+    Jun,4510,4110
+    Jul,3918,5510
+    Aug,8810,2930
+    Sep,7182,3504
+    Oct,6911,3881
+    Nov,6749,4761
+    Dec,7184,4918
+</pLines>
+===radar===
+{{#pRadar: size=300x200|striped|filled|data=
+    ,Allocated Budget,Actual Spending
+    Sales,4,5
+    Marketing,2,5
+    Development,6,1
+    Customer Support,2,1
+    IT,3,2
+    Administration,1,1
+}}
+
+==GraphViz==
+<graphviz location="center" renderer="dot">
+    digraph {
+        /* 全图参数 */
+        rankdir=LR; ranksep=1.6; splines=line;
+        ratio=1.1; /*size="10!,30!";*/
+        bgcolor=white; style=filled;
+        /*label="公司组织架构图"; labelloc=top; labeljust=center; fontname="微软雅黑"; fontsize=24; fontcolor=black;*/
+ 
+        /* 节点缺省参数 */
+        node[ shape=box, width=1.5, /*height=0.3,*/ penwidth=0.5, color=black,
+              fontname="微软雅黑", fontsize=12, fontcolor=black,
+              fillcolor=white, style=filled ];
+ 
+        /* 连线缺省参数 */
+        edge[ arrowhead=open, arrowsize=0.5, penwidth=1.0, color=black ];
+ 
+        /* Level 1 */
+        {
+            rank=same;
+            总经理    [ URL="[[总经理]]", fillcolor=tomato ];
+            总经理助理[ URL="[[总经理助理]]", fillcolor=lightpink ];
+        }
+        总经理->总经理助理;
+ 
+        /* Level 2 */
+        {
+            rank=same;
+            node[ fillcolor=powderblue ];
+            行政事务部  [ URL="[[行政事务部]]" ];
+            人力资源部  [ URL="[[人力资源部]]" ];
+            市场部      [ URL="[[市场部]]", fillcolor=skyblue ];
+            财务部      [ URL="[[财务部]]", fillcolor=gold ];
+            采购部      [ URL="[[采购部]]", fillcolor=gold ];
+        }
+        总经理:e->行政事务部:w;
+        总经理:e->人力资源部:w;
+        总经理:e->市场部:w;
+        总经理:e->财务部:w;
+        总经理:e->采购部:w;
+    }
+</graphviz>
+
+<mscgen>
+    msc {
+        hscale = "2";
+
+        a,b,c;
+
+        a->b [ label = "ab()" ] ;
+        b->c [ label = "bc(TRUE)"];
+        c=>c [ label = "process(1)" ];
+        c=>c [ label = "process(2)" ];
+        ...;
+        c=>c [ label = "process(n)" ];
+        c=>c [ label = "process(END)" ];
+        a<<=c [ label = "callback()"];
+        ---  [ label = "If more to run", ID="*" ];
+        a->a [ label = "next()"];
+        a->c [ label = "ac1()\nac2()"];
+        b<-c [ label = "cb(TRUE)"];
+        b->b [ label = "stalled(...)"];
+        a<-b [ label = "ab() = FALSE"];
+    }
+</mscgen>
+
+==MyVariables==
+* 当前用户: {{CURRENTUSER}}
+* 当前登录用户: {{CURRENTLOGGEDUSER}}
+* 当前用户真名: {{CURRENTUSERREALNAME}}
+* LOGO: {{LOGO}}
+* UUID: {{UUID}}
+* 用户语言: {{USERLANGUAGECODE}}
+
+==Variables==
+* 定义: {{#vardefine:name|zhoujh}}
+* 显示: {{#var:name}}
+
+==PhpTags==
+<phptag>
+    echo "Hello World!\n";
+</phptag>
+
+==PhpTagsFunctions==
+<phptag>
+    echo strtoupper("hello world\n");
+</phptag>
+
+==ExternalData==
+{{#get_db_data:db=db_wiki|from=page|where=1>0|order by=page_id|data=id=page_id,title=page_title,len=page_len,visit=page_touched}}
+{| class="wikitable"
+! ID
+! 标题
+! 长度
+! 访问
+{{#for_external_table:
+{{!}}-
+{{!}} {{{id}}}
+{{!}} {{{title}}}
+{{!}} {{{len}}}
+{{!}} {{{visit}}}
+{{!}}-
+}}
+|}
+{{#clear_external_data:}}
+
+==SemanticMediaWiki==
+* {{#ask:[[分类:TEST]]}}
+
+==PageForms(SemanticForms)==
+* {{#arraymap:a,b,c|,|@@@|# @@@|\n}}
+
+==SemanticResultFormat==
+* {{#ask:[[分类:TEST]]|?|format=excel}}
+
+==DynamicPageList==
+* {{#dpl:category=TEST}}
+
+==WikiCategoryTagCloud==
+<tagcloud style="background:white">
+    min_size=48
+</tagcloud>
+
+==MyApiExt & MyNoteExt==
+<MyNote>
+    @table wikitable
+        !id | !name  | !age
+        001 | 周京晖 | 47
+        002 | 孙嬿莉 | 40
+        003 | 周子骞 |  3
+</MyNote>
