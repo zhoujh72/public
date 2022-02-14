@@ -23,9 +23,11 @@ int main(int argc, char **argv)
 </syntaxhighlight>
 
 ==SimpleTooltip==
+<div>
 * {{#tip-text: 显示文本|这是隐藏在后面的提示文本}}
 * {{#tip-info: 这是隐藏在后面的提示文本}}
 * {{#tip-img: /resources/assets/logo.png|image 这是隐藏在后面的提示文本}}
+</div>
 
 ==CategoryTree==
 * <categorytree>TEST</categorytree>
