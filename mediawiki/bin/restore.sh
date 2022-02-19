@@ -16,7 +16,7 @@ if [ "$1" == "-h" -o "$1" == "--help" ]; then
     echo "    RESTORE_RESOURCES : whether to restore MediaWiki resources (CURRENT = '$RESTORE_RESOURCES', DEFAULT = 0)"
     echo "    ENABLE_TRACE      : whether to show verbose information    (CURRENT = '$ENABLE_TRACE', DEFAULT = 0)"
     echo "  2) the variables referenced in script"
-    echo "    WIKI_HOME         : the MediaWiki home directory     (CURRENT = '$WIKI_HOME', DEFAULT = '/var/www/html/wiki')"
+    echo "    WIKI_HOME         : the MediaWiki home directory     (CURRENT = '$WIKI_HOME', DEFAULT = '/var/www/wiki')"
     echo "    WIKI_DATA         : the MediaWiki data directory     (CURRENT = '$WIKI_DATA', DEFAULT = '/var/data/wiki')"
     echo "    WIKI_RES_DIR      : the MediaWiki resource directory (CURRENT = '$WIKI_RES_DIR', DEFAULT = '\$WIKI_DATA/resources')"
     echo "    WIKI_DB_HOST      : the MySQL host                   (CURRENT = '$WIKI_DB_HOST', DEFAULT = 'localhost')"
@@ -89,7 +89,7 @@ fi
 echo "    RESTORE_RESOURCES => $RESTORE_RESOURCES"
 
 if [ -z "$WIKI_HOME" ]; then
-    WIKI_HOME="/var/www/html/wiki"
+    WIKI_HOME="/var/www/wiki"
 fi
 echo "    WIKI_HOME         => '$WIKI_HOME'"
 
